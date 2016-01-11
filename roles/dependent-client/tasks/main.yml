@@ -1,0 +1,2 @@
+---
+- include: ../../common/tasks/install-service.yml service_name=primary

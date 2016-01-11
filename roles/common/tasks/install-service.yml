@@ -1,0 +1,6 @@
+---
+- name: install {{service_name}}
+  become: yes
+  template: src=fake-service.sh
+            dest=/usr/local/bin/{{service_name}}.sh
+            mode=0755
