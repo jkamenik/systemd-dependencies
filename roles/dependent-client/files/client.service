@@ -1,0 +1,22 @@
+[Unit]
+Description=Client Service
+
+# declare that primary is required to be started for me to run.  This
+# will make sure that primary is started if someone tries to start me.
+Requires=primary.service
+
+# Make sure that I am started after primary has been started.
+After=primary.service
+
+# Tell me to restart or die if primary does
+PartOf=primary.service
+
+
+[Service]
+User=root
+ExecStart=/bin/sh /usr/local/bin/client.sh
+
+
+[Install]
+# declare that if primary is started so too am I
+WantedBy=primary.service

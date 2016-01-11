@@ -1,0 +1,9 @@
+# This file is expect to be like a vendor's service file, containing
+# only enough to start the process.
+
+[Unit]
+Description=Primary Service
+
+[Service]
+User=root
+ExecStart=/bin/sh /usr/local/bin/primary.sh
