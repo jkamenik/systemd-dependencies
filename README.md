@@ -16,7 +16,7 @@ my-host ansible_ssh_user=myself ansible_ssh_pass=secret
 Then call the correct playbook with the example you want.
 
 ``` bash
-$ ansible-playbook -i inventory.yml example.yml
+$ ansible-playbook -i inventory example.yml
 ```
 
 At this point simply log into the host and play around with the
