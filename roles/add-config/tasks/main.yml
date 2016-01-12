@@ -1,0 +1,21 @@
+---
+- include: ../../common/tasks/install-service.yml service_name=add-config
+
+- name: create additional config directory
+  become: yes
+  file: path=/etc/systemd/system/add-config.service.d
+        state=directory
+
+- name: add additional configs
+  become: yes
+  copy: src={{item}}.conf
+        dest=/etc/systemd/system/add-config.service.d/{{item}}.conf
+  with_items:
+    - name
+    - args
+
+- include: ../../common/tasks/reload-systemd.yml
+
+- name: enable services
+  become: yes
+  service: name=add-config enabled=yes

@@ -36,6 +36,30 @@ The daemon that each service runs is based on the same template:
 
 Each example has a corresponding playbook and instructions.
 
+#### Add Config ####
+
+It is possible to add additional configs by adding <name>.conf files
+to /etc/systemd/system/<service>.service.d/.  This makes it possible
+to provide some overrides without needing adjust the original service file.
+
+Configs added in this way are additive.  This means that you cannot
+remove any values previously added.  If you need this behavior then
+see the "Full Override" example.
+
+Note: some values are last-one wins, and others cannot be added to.
+In those cases a full override may be better.
+
+Install: `ansible-playbook -i inventory add-config.yml`
+
+Service:
+
+1. add-config
+
+Behaviors:
+
+1. The service description is overridden by `name.conf`
+1. A pre and post hook are added by `args.conf`
+
 ### Full Override
 
 This example shows how you can place a fully overridden service file in /etc/systemd/system.
