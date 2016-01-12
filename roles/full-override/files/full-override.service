@@ -1,0 +1,8 @@
+# This file completely replaces the one in /usr/lib/systemd/system
+
+[Unit]
+Description=Full Overriden Service
+
+[Service]
+User=root
+ExecStart=/bin/sh /usr/local/bin/full-override.sh overridden

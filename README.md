@@ -36,6 +36,21 @@ The daemon that each service runs is based on the same template:
 
 Each example has a corresponding playbook and instructions.
 
+### Full Override
+
+This example shows how you can place a fully overridden service file in /etc/systemd/system.
+
+Install: `asnible-playbook -i inventory full-override`
+
+Service:
+
+1. full-override
+
+Behaviors:
+
+1. Via the override in /etc/systemd/system a different argument is passed to the service.
+1. Running `sudo service start full-override` will cause the new argument to be printed with the name
+
 ### Dependent Client
 
 In this style there is a primary service (like a database) which is
@@ -43,7 +58,12 @@ running on the machine, and a client service which needs it.  The
 primary service is off-the-shelf software so its service files has no
 knowledge of the dependent client service.
 
-Install: `asnible-playbook -i inventory.yml dependent-client.yml`
+Install: `asnible-playbook -i inventory dependent-client.yml`
+
+Service:
+
+1. primary
+2. client
 
 Behaviors:
 

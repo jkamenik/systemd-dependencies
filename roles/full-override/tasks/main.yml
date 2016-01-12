@@ -1,0 +1,13 @@
+---
+- include: ../../common/tasks/install-service.yml service_name=full-override
+
+- name: overwrite full-override service files
+  become: yes
+  copy: src=full-override.service
+        dest=/etc/systemd/system/full-override.service
+
+- include: ../../common/tasks/reload-systemd.yml
+
+- name: enable services
+  become: yes
+  service: name=full-override enabled=yes
