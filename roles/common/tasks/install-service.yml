@@ -4,3 +4,8 @@
   template: src=fake-service.sh
             dest=/usr/local/bin/{{service_name}}.sh
             mode=0755
+
+- name: copy {{service_name}} service files
+  become: yes
+  template: src=fake-service.service
+            dest=/usr/lib/systemd/system/{{service_name}}.service

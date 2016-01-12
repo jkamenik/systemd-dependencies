@@ -2,17 +2,12 @@
 - include: ../../common/tasks/install-service.yml service_name=primary
 - include: ../../common/tasks/install-service.yml service_name=client
 
-- name: copy service files
+- name: overwrite client service files
   become: yes
-  copy: src={{item}}
-        dest=/usr/lib/systemd/system/{{item}}
-  with_items:
-    - primary.service
-    - client.service
+  copy: src=client.service
+        dest=/usr/lib/systemd/system/client.service
 
-- name: force systemd reload
-  become: yes
-  command: systemctl daemon-reload
+- include: ../../common/tasks/reload-systemd.yml
 
 - name: enable services
   become: yes

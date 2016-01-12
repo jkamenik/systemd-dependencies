@@ -1,0 +1,9 @@
+# This file is expect to be like a vendor's service file!
+# It contains only enough to start the process
+
+[Unit]
+Description={{service_name}} Service
+
+[Service]
+User=root
+ExecStart=/bin/sh /usr/local/bin/{{service_name}}.sh

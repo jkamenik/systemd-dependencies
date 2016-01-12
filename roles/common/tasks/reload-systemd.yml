@@ -1,0 +1,4 @@
+---
+- name: force systemd reload
+  become: yes
+  command: systemctl daemon-reload
